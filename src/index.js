@@ -14,6 +14,6 @@ mongoose.connect("mongodb+srv://Ritikesh21:Gyanav_123@cluster0.fg4arro.mongodb.n
 .then(() => {console.log("MongoDb is Connected")})
 .catch(err => console.log(err))
 
-app.listen(port, ()=>{
-    console.log("Connected to Port " + port.toString())
+app.listen(process.env.PORT || port, ()=>{
+    console.log("Connected to Port " + (process.env.PORT || port).toString())
 })

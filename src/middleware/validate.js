@@ -1,7 +1,6 @@
-const {body, validationResult, check} = require('express-validator');
-const { default: mongoose } = require('mongoose');
-const collegeModel = require('../models/collegeModel');
-const internModel = require('../models/internModel');
+const {body, validationResult, check} = require('express-validator')
+const collegeModel = require('../models/collegeModel')
+const internModel = require('../models/internModel')
 
 const collegeValidateSchema = [
     body('name')
@@ -12,7 +11,14 @@ const collegeValidateSchema = [
     .isAlpha()
     .withMessage('Please Enter the Alphabets Only')
     .notEmpty()
-    .withMessage("The name should contain only letters and should be unique."),
+    .withMessage("The name should contain something.")
+    .custom(value => {
+      return collegeModel.findOne({name : value}).then(user => {
+        if (user) {
+          return Promise.reject('Name already in use');
+        }
+      });
+    }),
     body('fullName')
     .exists()
     .withMessage('Please Enter the fullname')
