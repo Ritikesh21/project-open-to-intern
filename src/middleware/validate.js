@@ -1,6 +1,7 @@
 const {body, validationResult, check} = require('express-validator');
 const { default: mongoose } = require('mongoose');
 const collegeModel = require('../models/collegeModel');
+const internModel = require('../models/internModel');
 
 const collegeValidateSchema = [
     body('name')
@@ -44,7 +45,14 @@ const internValidateSchema = [
   .exists()
   .withMessage('Please Enter The email')
   .isString()
-  .withMessage('Please Enter the email in String'),
+  .withMessage('Please Enter the email in String')
+  .custom(value => {
+    return internModel.findOne({email : value}).then(user => {
+      if (user) {
+        return Promise.reject('E-mail already in use');
+      }
+    });
+  }),
   body('mobile')
   .exists()
   .withMessage('Please Enter the Mobile Number')
@@ -55,6 +63,13 @@ const internValidateSchema = [
   .isLength({
     min : 10,
     max : 10
+  })
+  .custom(value => {
+    return internModel.findOne({mobile : value}).then(user => {
+      if (user) {
+        return Promise.reject('Mobile already in use');
+      }
+    });
   }),
   body('collegeName')
   .exists()
