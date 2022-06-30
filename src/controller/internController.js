@@ -42,7 +42,7 @@ const getCollegeWithAllIntern = async (req, res) => {
                             fullName : collegeData[0].fullName,
                             logoLink : collegeData[0].logoLink,
                             interns : internData}
-                res.status(201).send({status : true,
+                res.status(200).send({status : true,
                 data : data})
             }
             else{
@@ -50,7 +50,7 @@ const getCollegeWithAllIntern = async (req, res) => {
                     fullName : collegeData[0].fullName,
                     logoLink : collegeData[0].logoLink,
                     interns : []}
-                res.status(201).send({status : true,
+                res.status(200).send({status : true,
                 data : data})
             }
         }
