@@ -4,10 +4,19 @@ const internModel = require("../models/internModel")
 const createIntern = async (req, res) => {
     try{
         const data = req.body
-        const newIntern = await internModel.create(data)
+        const collegeName = data.collegeName
+        const college = await collegeModel.findOne({name : collegeName})
+        console.log(college)
+        const finalData = {name : data.name,
+                        email : data.email,
+                        mobile : data.mobile,
+                        collegeId : college._id,
+                        isDeleted : data.isDeleted}
+        console.log(finalData)
+        const newIntern = await internModel.create(finalData)
         if (newIntern){
             res.status(201).send({status : true,
-            data : newIntern})
+            data : finalData})
         }
         else{
             res.status(404).send({status : false,

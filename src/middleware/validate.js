@@ -17,18 +17,13 @@ const collegeValidateSchema = [
     .withMessage('Please Enter the fullname')
     .isString()
     .withMessage('Please Enter the String')
-    .notEmpty()
-    .withMessage('Please Enter Some Content'),
+    .notEmpty(),
     body('logoLink')
     .exists()
     .withMessage('Please Enter the logoLink')
     .isString()
     .withMessage('Please Enter the String')
     .notEmpty()
-    .withMessage('Please Enter Some Content'),
-    body('isDeleted')
-    .isBoolean()
-    .withMessage('Please Enter the true/false')
 ]
 
 module.exports.collegeValidateSchema = collegeValidateSchema
@@ -36,8 +31,7 @@ module.exports.collegeValidateSchema = collegeValidateSchema
 const internValidateSchema = [
   body('name')
   .exists()
-  .withMessage("Please Enter the name"),
-  body('name')
+  .withMessage("Please Enter the name")
   .isString()
   .withMessage("Please Enter the String")
   .isAlpha()
@@ -61,16 +55,12 @@ const internValidateSchema = [
   .isLength({
     min : 10,
     max : 10
-  })
-  .withMessage('Please Enter The Mobile Number Containing 10 digits'),
-  body('collegeId')
+  }),
+  body('collegeName')
   .exists()
-  .withMessage('Please Enter the CollegeId')
+  .withMessage('Please Enter the CollegeName')
   .isString()
-  .withMessage('Please Enter collegeId in String Type'),
-  body('isDeleted')
-  .isBoolean()
-  .withMessage('Please Enter the true/false')
+  .withMessage('Please Enter college Name in String Type')
 ]
 
 module.exports.internValidateSchema = internValidateSchema
