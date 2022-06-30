@@ -6,8 +6,8 @@ const collegeController = require("../controller/collegeController")
 router.post("/functionup/colleges", middleware.collegeValidateSchema, middleware.validatorError, collegeController.createCollege)
 
 const internController = require("../controller/internController")
-router.post("/functionup/interns", internController.createIntern)
+router.post("/functionup/interns", middleware.internValidateSchema, middleware.validatorError, internController.createIntern)
 
-router.get("/functionup/collegeDetails", internController.getCollegeWithAllIntern)
+router.get("/functionup/collegeDetails",middleware.getCollegeWithAllInternValidation, middleware.validatorError, internController.getCollegeWithAllIntern)
 
 module.exports = router

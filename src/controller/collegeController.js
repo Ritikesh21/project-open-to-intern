@@ -1,5 +1,4 @@
 const collegeModel = require("../models/collegeModel")
-const {body, validationResult} = require('express-validator')
 
 const createCollege = async (req, res) => {
     try{
@@ -7,7 +6,6 @@ const createCollege = async (req, res) => {
         const newCollege = await collegeModel.create(data)
         if(newCollege){
             res.status(201).send({status : true,
-            message : "College Created Successfully",
             data : newCollege})
         }
         else{

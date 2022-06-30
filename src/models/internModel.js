@@ -18,7 +18,7 @@ const internSchema = new mongoose.Schema({
         //match : []
     },
     collegeId : {
-        type : "Object",
+        type : "String",
         required : true
     },
     isDeleted : {
