@@ -11,25 +11,21 @@ const collegeValidateSchema = [
     .isAlpha()
     .withMessage('Please Enter the Alphabets Only')
     .notEmpty()
-    .withMessage("The name should contain only letters and should be unique.")
-    /*.custom(value => {
-       return collegeModel.findOne({ where: {name: value} })
-          .then(() => {
-             return Promise.reject('Name already taken')
-          })
-    })*/,
-    body('fullname')
+    .withMessage("The name should contain only letters and should be unique."),
+    body('fullName')
     .exists()
     .withMessage('Please Enter the fullname')
     .isString()
     .withMessage('Please Enter the String')
-    .notEmpty(),
+    .notEmpty()
+    .withMessage('Please Enter Some Content'),
     body('logoLink')
     .exists()
     .withMessage('Please Enter the logoLink')
     .isString()
     .withMessage('Please Enter the String')
-    .notEmpty(),
+    .notEmpty()
+    .withMessage('Please Enter Some Content'),
     body('isDeleted')
     .isBoolean()
     .withMessage('Please Enter the true/false')
@@ -40,10 +36,12 @@ module.exports.collegeValidateSchema = collegeValidateSchema
 const internValidateSchema = [
   body('name')
   .exists()
-  .withMessage("Please Enter the name")
+  .withMessage("Please Enter the name"),
+  body('name')
   .isString()
   .withMessage("Please Enter the String")
   .isAlpha()
+  .withMessage("Please Enter Alphabets only")
   .notEmpty()
   .withMessage("The name should contain only letters and should be unique."),
   body('email')
@@ -63,7 +61,8 @@ const internValidateSchema = [
   .isLength({
     min : 10,
     max : 10
-  }),
+  })
+  .withMessage('Please Enter The Mobile Number Containing 10 digits'),
   body('collegeId')
   .exists()
   .withMessage('Please Enter the CollegeId')

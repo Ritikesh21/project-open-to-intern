@@ -1,0 +1,27 @@
+{
+  "name": "project-open-to-intern",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src/index",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ritikesh21/project-open-to-intern.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ritikesh21/project-open-to-intern/issues"
+  },
+  "homepage": "https://github.com/Ritikesh21/project-open-to-intern#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "express-validator": "^6.14.2",
+    "mongoose": "^6.4.1",
+    "nodemon": "^2.0.18"
+  }
+}
