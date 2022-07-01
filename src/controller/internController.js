@@ -5,8 +5,9 @@ const createIntern = async (req, res) => {
     try{
         const data = req.body
         const collegeName = data.collegeName
+        //console.log(collegeName)
         const college = await collegeModel.findOne({name : collegeName})
-        console.log(college)
+        //console.log(college)
         const finalData = {name : data.name,
                         email : data.email,
                         mobile : data.mobile,
@@ -42,17 +43,16 @@ const getCollegeWithAllIntern = async (req, res) => {
                             fullName : collegeData[0].fullName,
                             logoLink : collegeData[0].logoLink,
                             interns : internData}
-                res.status(200).send({status : true,
-                data : data})
+                res.status(200).send({status : true, data : data})
             }
-            else{
+            /*else{
                 const data = {name : collegeData[0].name,
                     fullName : collegeData[0].fullName,
                     logoLink : collegeData[0].logoLink,
                     interns : []}
                 res.status(200).send({status : true,
                 data : data})
-            }
+            }*/
         }
         else{
             res.status(404).send({status : false,

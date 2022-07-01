@@ -41,8 +41,6 @@ const internValidateSchema = [
   .withMessage("Please Enter the name")
   .isString()
   .withMessage("Please Enter the String")
-  .isAlpha()
-  .withMessage("Please Enter Alphabets only")
   .notEmpty()
   .withMessage("The name should contain only letters and should be unique."),
   body('email')
@@ -87,7 +85,7 @@ const internValidateSchema = [
 module.exports.internValidateSchema = internValidateSchema
 
 const getCollegeWithAllInternValidation = [
-  check('name')
+  check('collegeName')
   .exists()
   .withMessage('Please Enter The College Name')
   .isString()
@@ -99,7 +97,7 @@ module.exports.getCollegeWithAllInternValidation = getCollegeWithAllInternValida
 const validatorError = async (req, res, next) =>{
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+      return res.status(404).json({ errors: errors.array() });
     }
     next()
 }
