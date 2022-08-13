@@ -13,7 +13,7 @@ const createIntern = async (req, res) => {
                         mobile : data.mobile,
                         collegeId : college._id,
                         isDeleted : data.isDeleted}
-        console.log(finalData)
+        //console.log(finalData)
         const newIntern = await internModel.create(finalData)
         if (newIntern){
             res.status(201).send({status : true,
